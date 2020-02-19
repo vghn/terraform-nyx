@@ -89,3 +89,15 @@ module "vpc" {
 
   tags = var.common_tags
 }
+
+module "prometheus" {
+  source = "github.com/vghn/terraform-prometheus"
+
+  vpc_id = module.vpc.vpc_id
+
+  cloudflare_email   = var.cloudflare_email
+  cloudflare_api_key = var.cloudflare_api_key
+  cloudflare_zone_id = var.cloudflare_zone_id
+
+  common_tags = var.common_tags
+}
